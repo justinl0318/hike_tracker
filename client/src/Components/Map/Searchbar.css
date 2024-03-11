@@ -1,0 +1,19 @@
+.search {
+    padding: 3px 0; /* 10px for top and bottom, 0px for left and right*/
+    font-size: 20px;
+    height: 95px;
+}
+
+.search input {
+    padding-left: 5px;
+    width: 100%;
+}
+
+.searchbar {
+    width: 100vw;
+    height: 40px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+

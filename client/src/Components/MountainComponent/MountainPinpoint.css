@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anta&family=Noto+Sans+TC:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.pinpoint {
+    position: static;
+    width: 100px;
+    height: 30px;
+    transition: transform 0.2s; /* Add transition for zoom effect */
+    /* background: black; */
+}
+
+/* Zoom in effect when hovering over icon or name */
+.pinpoint:hover{
+    transform: scale(1.2);
+}
+
+
+.pinpoint-icon {
+    color: red; 
+    font-size: 200%; 
+    cursor: pointer;
+    display: inline;
+}
+
+.pinpoint-name {
+    font-family: "Noto Sans TC", sans-serif;
+    margin-top: -15px;
+    margin-left: 25px; /* Adjust spacing between icon and name */
+    font-size: 18px; /* Font size of the name */
+    font-weight: 500;
+}
+
+
+

@@ -1,0 +1,16 @@
+.horizontal-window {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    width: 100%;
+}
+
+
+.forecast-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    row-gap: 15px;
+    column-gap: 40px;
+    width: auto;
+}

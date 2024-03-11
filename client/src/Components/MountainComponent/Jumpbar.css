@@ -1,0 +1,16 @@
+.nav-link {
+    text-decoration: none; /* Remove underline by default */
+    cursor: pointer; /* Set cursor to pointer */
+}
+  
+  /* Hover styles */
+.nav-link:hover {
+    text-decoration: underline; /* Underline when hovering */
+}
+
+.mydropdown {
+    padding-top: 7.5px;
+}
+
+
+

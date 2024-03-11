@@ -1,0 +1,76 @@
+body {
+    background-color: #EEEEEE;
+}
+
+.progress-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.progress-bar {
+    width: 327px;
+    height: 20px;
+    border: 1px solid #A1A1A1;
+    border-radius: 5px;
+    background-color: #eee;
+    margin-top: 20px;
+}
+
+.progress-form {
+    margin-top: 15px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+.progress-percent {
+    position: absolute;
+    left: 50%;
+    margin-top: 9px;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+    color: #191919;
+}
+
+
+.progress-form input {
+    padding-left: 5px;
+    height: 35px;
+    border-radius: 2px;
+    background-color: white;
+    color: #212529;
+    width: 30vw;
+}
+
+.progress-form Button {
+    margin-left: 2px;
+    height: 35px;
+}
+
+.progress-scrollable {
+    max-height: calc(100vh - 120px); /* Adjust the value based on your design */
+    overflow-y: auto;
+}
+
+.progress-mountain-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0px 100px;
+    height: 60px;
+    width: 300px;
+    font-size: 25px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.progress-mountain-block-name {
+    margin-left: 10px;
+}
+
+.progress-mountain-block-checkbox {
+    margin-right: 10px;
+    width: 30px;
+}

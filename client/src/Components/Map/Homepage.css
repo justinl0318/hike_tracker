@@ -1,0 +1,28 @@
+.page {
+    display: flex;
+    height: 100vh;
+}
+
+.left-hand-side {
+    flex: 0 0 auto;
+    width: 60vw;
+    overflow-y: hidden;
+}
+
+.right-hand-side {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.search-bar-container {
+    margin-bottom: -47px;
+    margin-left: 2px;
+    margin-right: 2px;
+    height: auto;
+}
+
+.mountain-list {
+    height: 100vh;
+    overflow-y: auto;
+}
+

@@ -1,0 +1,27 @@
+.mynavbar {
+    height: 55px;
+}
+
+.dropdown-toggle {
+    font-size: 17px; 
+    color: inherit !important; 
+    background-color: transparent !important; 
+    border: none !important; 
+    box-shadow: none !important; 
+}
+  
+.dropdown-toggle:hover {
+    text-decoration: underline;
+}
+
+.dropdown-custom {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.hike-tracker-logo {
+    width: 40px;
+    height: auto;
+    margin-right: 5px;
+}
+
