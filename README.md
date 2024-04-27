@@ -27,7 +27,7 @@ API: [google-map-react](https://github.com/google-map-react/google-map-react),
 
 ### Steps: 
 
-1. Start backend server by running ```node run dev``` in folder ```./server```
+1. Start backend server by running ```npm run dev``` in folder ```./server```
 2. Start react by running ```npm start``` in folder ```./client```
 3. Generate your own google map api, and replace
    - ```const apiKey=""``` in ```./client/src/Components/Map/Map.js```
