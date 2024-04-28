@@ -6,7 +6,7 @@ import "./Map.css"
 import Axios from "axios";
 
 // apikey for using google map
-const apiKey = "AIzaSyByj3THssrjQW90MEQcdCgaYwb6L-cih9s"
+const apiKey = ""
 
 function Map(){
 

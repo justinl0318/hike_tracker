@@ -6,8 +6,8 @@ import { Element } from "react-scroll";
 import GoogleMapReact from 'google-map-react';
 import MountainPinpoint from "./MountainPinpoint";
 
-const weather_api_key = "279d1cedb225443ea8495056240903"
-const map_api_key = "AIzaSyByj3THssrjQW90MEQcdCgaYwb6L-cih9s" 
+const weather_api_key = ""
+const map_api_key = "" 
 const taiwanProps = {
     center: {
         lat: 23.6978,
