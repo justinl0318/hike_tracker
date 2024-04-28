@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { FaUser, FaLock } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Axios from "axios"
 
 function Register() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    
+    const navigate = useNavigate()
+
     console.log(username)
 
     const handleSubmit = async (e) => {
@@ -15,11 +16,11 @@ function Register() {
         console.log(username, password)
         try {
             const response = await Axios.post(
-                "http://localhost:5000/register",
+                "http://localhost:5000/users/register",
                 {username, password}
             );
             if (response.data.success) {
-                window.location.href = "/";
+                navigate("/")
             }
             else{
                 alert(response.data.message);
@@ -55,7 +56,13 @@ function Register() {
                             <FaLock className="icon"/>
                         </div>
                         <button type="submit">Register</button>
-
+                        <div className="register-link">
+                            <p>Back to Home
+                                <Link to="/">
+                                    <a href="#">Home</a>
+                                </Link>
+                            </p>
+                        </div>
                     </form>
                 </div>
             </div>

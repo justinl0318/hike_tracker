@@ -1,11 +1,27 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./mountainblock.css"; 
-import mountains_list from "../Assets/mountainslist";
 import { Link } from "react-router-dom";
+import Axios from "axios";
 
 // in react, you have to import the photo first so that u can use it
 
 function MountainBlock({ searchQuery, pinpointQuery, pinpointHover }) {
+    const [mountains_list, setMountain_list] = useState([])
+
+	const storedUsername = localStorage.getItem('usernameGlobal')
+	useEffect(() => {
+		const fetchMountainData = async () => {
+			try {
+				const response = await Axios.get(`http://localhost:5000/users/${storedUsername}/mountains`);
+				setMountain_list(response.data); //set value
+			} catch (error) {
+				console.error('Error fetching mountain data:', error);
+			}
+		}
+
+		fetchMountainData();
+	}, []); // Empty dependency, runs only once initially
+    
     console.log(searchQuery, pinpointQuery)
 
     /* if pinpointQuery is not empty, render pinpointquery first */
@@ -67,7 +83,7 @@ function MountainBlock({ searchQuery, pinpointQuery, pinpointHover }) {
                 <div className={`card mountain-block ${pinpointHover === mountain.name ? 'pinpoint-hover' : ''}`} key={mountain.id}>
                     <div className="bg-image hover-overlay" data-mdb-ripple-init data-mdb-ripple-color="light">
                         {/* import photo first */}
-                        <img src={require(`../Assets/mountains/${mountain.id}.jpg`)} className="img-fluid mountain-image"/>                        
+                        <img src={require(`../../../../server/User/${storedUsername}/${mountain.id}.jpg`)} className="img-fluid mountain-image"/>                        
                         <a href="#!">
                         <div className="mask" style={{backgroundColor: "rgba(251, 251, 251, 0.15);"}}></div>
                         </a>

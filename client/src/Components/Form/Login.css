@@ -117,3 +117,19 @@
     text-decoration: underline;
 }
 
+.delete-link {
+    text-align: center;
+    font-size: 15px;
+    margin-top: -10px;
+}
+
+.delete-link p a {
+    color: black;
+    text-decoration: none;
+    padding-left: 5px;
+    font-weight: bold
+}
+
+.delete-link p a:hover {
+    text-decoration: underline;
+}

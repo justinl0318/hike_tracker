@@ -1,24 +1,49 @@
 import React from "react";
 import NavBar from "../Navbar";
-import mountains_list from "../Assets/mountainslist";
+import Axios from "axios";
 import { useState, useEffect } from "react";
 import "./Progress.css"
 import Button from 'react-bootstrap/Button';
 
 function Progress() {
+    const [mountains_list, setMountain_list] = useState([])
+
+	const storedUsername = localStorage.getItem('usernameGlobal')
+	useEffect(() => {
+		const fetchMountainData = async () => {
+			try {
+				const response = await Axios.get(`http://localhost:5000/users/${storedUsername}/mountains`);
+				setMountain_list(response.data); //set value
+			} catch (error) {
+				console.error('Error fetching mountain data:', error);
+			}
+		}
+
+		fetchMountainData();
+	}, []); // Empty dependency, runs only once initially
+
     const [search, setSearch] = useState("")
     const [progress, setProgress] = useState(0);
     const filteredMountains = mountains_list.filter(mountain => mountain.name.includes(search))
 
-    const handleCheckBoxChange = (isChecked) => {
+    const handleCheckBoxChange = async (isChecked, mountainId) => {
         setProgress(() => isChecked ? progress + 1 : progress - 1)
+
+        try {
+            const response = await Axios.put(`http://localhost:5000/users/${storedUsername}/mountains/update/${mountainId}`, {
+                checked: isChecked
+            })
+            console.log("Update success", response.data)
+        } catch (error) {
+            console.error('Error updating mountain:', error);
+        }
     }
 
     const handleButtonClick = (e) => {
         e.preventDefault();
     }
 
-    // find the number of checked at first render
+    // find the number of checked
     useEffect(() => {
         let newProgress = 0;
         mountains_list.map(mountain => {
@@ -27,7 +52,7 @@ function Progress() {
             }
         });
         setProgress(newProgress);
-    }, [])
+    }, [mountains_list]) // run when value of mountains_list change
 
     return (
         <div>
@@ -64,7 +89,7 @@ function Progress() {
                                 <input 
                                     type="checkbox" 
                                     defaultChecked={mountain.checked} 
-                                    onChange={(e) => handleCheckBoxChange(e.target.checked)}
+                                    onChange={(e) => handleCheckBoxChange(e.target.checked, mountain.id)}
                                 >
                                 </input>
                             </div>

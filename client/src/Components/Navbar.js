@@ -1,10 +1,26 @@
 import React, { useContext } from "react";
 import { Navbar, Nav, Dropdown } from "react-bootstrap";
 import "./Navbar.css";
-import mountains_list from "./Assets/mountainslist";
+import { useState, useEffect } from "react";
+import Axios from "axios";
 import HikeTrackerLogo from "./Assets/hike-tracker-logo-1.jpg"
 
 function NavBar() {
+    const [mountains_list, setMountain_list] = useState([])
+
+	const storedUsername = localStorage.getItem('usernameGlobal')
+	useEffect(() => {
+		const fetchMountainData = async () => {
+			try {
+				const response = await Axios.get(`http://localhost:5000/users/${storedUsername}/mountains`);
+				setMountain_list(response.data); //set value
+			} catch (error) {
+				console.error('Error fetching mountain data:', error);
+			}
+		}
+
+		fetchMountainData();
+	}, []); // Empty dependency, runs only once initially
 
     return (
             <div className="mynavbar">
@@ -26,12 +42,13 @@ function NavBar() {
                             </Dropdown.Menu>
                             </Dropdown>
                             <Nav.Link href="/progress" style={{color: "black"}}>Progress</Nav.Link>
-                            
+                            <Nav.Link href="/upload" style={{color: "black"}}>Upload</Nav.Link>
+                            <Nav.Link href="/delete-mountain" style={{color: "black"}}>Delete</Nav.Link>
                         </Nav>
 
                         <Dropdown>
                             <Dropdown.Toggle variant="light" id="dropdown-basic">
-                                Account
+                                {storedUsername}
                             </Dropdown.Toggle>
                             <Dropdown.Menu className="dropdown-custom">
                                 <Dropdown.Item href="/">Logout</Dropdown.Item>

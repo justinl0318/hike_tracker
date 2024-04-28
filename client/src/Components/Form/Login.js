@@ -1,14 +1,15 @@
 import React, { useEffect } from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { FaUser, FaLock } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 import Axios from "axios"
 
 function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    
+    const navigate = useNavigate()
+
     console.log(username)
 
     const handleSubmit = async (e) => {
@@ -16,17 +17,31 @@ function Login() {
         console.log(username, password)
         try {
             const response = await Axios.post(
-                "http://localhost:5000/login",
+                "http://localhost:5000/users/login",
                 {username, password}
             );
             if (response.data.success) {
-                window.location.href = "/homepage";
+                localStorage.setItem('usernameGlobal', username)
+                navigate("/homepage")
             }
             else{
                 alert(response.data.message);
             }
         }
         catch (error) {
+            alert("An error occurred. Please try again later.");
+        }
+    }
+
+    const fetchUsernames = async() => {
+        try {
+            const response = await Axios.get("http://localhost:5000/users/");
+            const data = await response.data;
+            console.log(data)
+            // Convert array of usernames into a single string, then show it in an alert
+            const usernamesList = data.map(user => user.username).join(', ');
+            alert('Usernames: ' + usernamesList);
+        } catch (error) {
             alert("An error occurred. Please try again later.");
         }
     }
@@ -72,6 +87,20 @@ function Login() {
                                 </Link>
                             </p>
                         </div>
+                        <div className="delete-link">
+                            <p>Delete an account
+                                <Link to="/delete-user">
+                                    <a href="#">Delete</a>
+                                </Link>
+                            </p>
+                        </div>
+
+                        <button type="button" onClick={fetchUsernames} style={{
+                            width: '5vw', 
+                            fontSize: '13px',
+                            height: '30px', 
+                            backgroundColor: "darkgray", 
+                            marginLeft: '260px'}}>List Users</button>
                     </form>
                 </div>
             </div>

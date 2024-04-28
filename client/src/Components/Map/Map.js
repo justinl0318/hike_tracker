@@ -1,14 +1,32 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import GoogleMapReact from 'google-map-react';
-import mountains_list from "../Assets/mountainslist";
 import Pinpoint from "./pinpoint";
 import "./Map.css"
+import Axios from "axios";
 
 // apikey for using google map
-const apiKey = ""
+const apiKey = "AIzaSyByj3THssrjQW90MEQcdCgaYwb6L-cih9s"
 
 function Map(){
+
+	const [mountains_list, setMountain_list] = useState([])
+
+	const storedUsername = localStorage.getItem('usernameGlobal')
+	useEffect(() => {
+		const fetchMountainData = async () => {
+			try {
+				const response = await Axios.get(`http://localhost:5000/users/${storedUsername}/mountains`);
+				setMountain_list(response.data); //set value
+			} catch (error) {
+				console.error('Error fetching mountain data:', error);
+			}
+		}
+
+		fetchMountainData();
+	}, []); // Empty dependency, runs only once initially
+
+
 
 	const taiwanProps = {
 		center: {

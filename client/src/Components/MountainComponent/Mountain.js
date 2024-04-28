@@ -6,8 +6,8 @@ import { Element } from "react-scroll";
 import GoogleMapReact from 'google-map-react';
 import MountainPinpoint from "./MountainPinpoint";
 
-const weather_api_key = ""
-const map_api_key = "" 
+const weather_api_key = "279d1cedb225443ea8495056240903"
+const map_api_key = "AIzaSyByj3THssrjQW90MEQcdCgaYwb6L-cih9s" 
 const taiwanProps = {
     center: {
         lat: 23.6978,
@@ -16,10 +16,12 @@ const taiwanProps = {
     zoom: 8
 }
 
-function Mountain( {mountain } ) {
+function Mountain( { mountain } ) {
     const [weatherData, setWeatherData] = useState(null);
     const [loading, setLoading] = useState(true);
 
+    const storedUsername = localStorage.getItem('usernameGlobal')
+    
     useEffect(() => {
         fetchWeather();
     }, []);
@@ -57,7 +59,7 @@ function Mountain( {mountain } ) {
                                 <p>{mountain.info}</p>
                             </div>
                             <div className="image">
-                                <img src={require(`../Assets/mountains/${mountain.id}.jpg`)}/>
+                                <img src={require(`../../../../server/User/${storedUsername}/${mountain.id}.jpg`)}/>
                             </div>
                         </div>
                     </Element>
